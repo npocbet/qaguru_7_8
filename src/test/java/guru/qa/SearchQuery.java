@@ -1,5 +1,5 @@
 package guru.qa;
 
 public enum SearchQuery {
-    SELENIDE, ALLURE
+    Ноутбуки, Ультрабукиb, Копирыb, Сканеры, Тонеры, Бумага
 }
