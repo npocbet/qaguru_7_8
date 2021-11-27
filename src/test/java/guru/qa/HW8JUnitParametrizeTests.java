@@ -16,7 +16,7 @@ public class HW8JUnitParametrizeTests {
     @ValueSource(strings = {"Lenovo", "HP", "Asus"})
     @DisplayName("Поиск на ситилинке")
     @ParameterizedTest(name = "бренда {0}")
-    void SearchForBrendsOnCitilink(String value){
+    void searchForBrendsOnCitilink(String value){
         open("https://www.citilink.ru");
         $(".MainHeader__search input[type=\"search\"]").setValue(value).pressEnter();
         $(".BrandCategories__brand-header h1").shouldHave(Condition.text(value));
@@ -26,13 +26,13 @@ public class HW8JUnitParametrizeTests {
     @CsvSource(value = {"Lenovo|Мониторы", "HP|Ноутбуки", "Asus|Смартфоны"}, delimiter = '|')
     @DisplayName("Поиск на ситилинке")
     @ParameterizedTest(name = "бренда {0} в категории товара {1}")
-    void SearchForBrendsAndCategoriesOnCitilink(String brend, String category){
+    void searchForBrendsAndCategoriesOnCitilink(String brend, String category){
         open("https://www.citilink.ru");
         $(".MainHeader__search input[type=\"search\"]").setValue(category + " " + brend).pressEnter();
         $(".MainLayout__main h1").shouldHave(Condition.text(brend));
     }
 
-    static Stream<Arguments> SearchForBrendsAndCategoriesWithSpecifiedQuantityOnCitilink(){
+    static Stream<Arguments> searchForBrendsAndCategoriesWithSpecifiedQuantityOnCitilink(){
         return Stream.of(
                 Arguments.of("asus", List.of("компьютер", "9")),
                 Arguments.of("hp", List.of("принтер", "15")),
@@ -43,7 +43,7 @@ public class HW8JUnitParametrizeTests {
     @MethodSource
     @DisplayName("Поиск на ситилинке")
     @ParameterizedTest(name = "бренда {0} в категории товара и количестве {1}")
-    void SearchForBrendsAndCategoriesWithSpecifiedQuantityOnCitilink(String brend,List<String> category){
+    void searchForBrendsAndCategoriesWithSpecifiedQuantityOnCitilink(String brend,List<String> category){
         open("https://www.citilink.ru");
         $(".MainHeader__search input[type=\"search\"]").setValue(category.get(0) + " " + brend).pressEnter();
         $(".MainLayout__main h1").shouldHave(Condition.text(brend));
@@ -53,7 +53,7 @@ public class HW8JUnitParametrizeTests {
     @EnumSource(SearchQuery.class)
     @DisplayName("Поиск в ситилинке")
     @ParameterizedTest(name = "категории товара {0}")
-    void SearchForCategoriesOnCitilink(SearchQuery category){
+    void searchForCategoriesOnCitilink(SearchQuery category){
         open("https://www.citilink.ru");
         $("button[data-label=\"Каталог товаров\"]").click();
         $("a[data-title=\"Ноутбуки и компьютеры\"]").hover();
