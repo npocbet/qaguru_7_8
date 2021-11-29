@@ -11,6 +11,9 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.CollectionCondition.itemWithText;
 import static com.codeborne.selenide.Selenide.*;
 
+// comment 4 the first commit
+// comment 4 the second commit
+// comment 4 the third commit
 public class HW8JUnitParametrizeTests {
 
     @ValueSource(strings = {"Lenovo", "HP", "Asus"})
